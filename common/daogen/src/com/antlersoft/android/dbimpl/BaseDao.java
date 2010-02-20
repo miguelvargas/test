@@ -1,6 +1,3 @@
-/**
- * Copyright (C) 2009 Michael A. MacDonald
- */
 package com.antlersoft.android.dbimpl;
 
 import java.util.Collection;
@@ -9,8 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * @author Michael A. MacDonald
  * 
+ * @author SMineyev
+ *
+ * @param <T> Target bean class
  */
 public abstract class ImplementationBase<T> {
 
@@ -74,5 +73,5 @@ public abstract class ImplementationBase<T> {
 			c.close();
 		}
 	}
-
+	
 }

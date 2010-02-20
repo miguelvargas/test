@@ -1,17 +1,13 @@
-/**
- * Copyright (C) 2009 Michael A. MacDonald
- */
 package com.antlersoft.android.dbimpl;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 
 /**
- * Specialization of ImplementationBase for tables that have a long primary key
- * named _Id; this allows easy general purpose save and update
  * 
- * @author Michael A. MacDonald
- * 
+ * @author SMineyev
+ *
+ * @param <T> Target bean class
  */
 public abstract class IdImplementationBase<T> extends ImplementationBase<T> {
 
