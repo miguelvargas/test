@@ -1,11 +1,10 @@
 <!--
-Copyright 2005-2009 Michael A. MacDonald
-Please make changes to the sqlitegen_ant.properties file
+Please make changes to the daogen_ant.properties file
 
 Requires ant 1.6+
 -->
 <project name="sqlitegen" default="all">
-	<property file="sqlitegen_ant.properties"/>
+	<property file="daogen_ant.properties"/>
 	<target name="all" depends="android.db.jar,sqlitegen_eclipse_site"/>
 	<target name="android.db.jar" depends="buildcommon">
 		<mkdir dir="dist"/>
