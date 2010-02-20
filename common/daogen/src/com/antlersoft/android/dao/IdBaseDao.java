@@ -1,4 +1,4 @@
-package com.antlersoft.android.dbimpl;
+package com.antlersoft.android.dao;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -6,10 +6,11 @@ import android.database.Cursor;
 /**
  * 
  * @author SMineyev
- *
- * @param <T> Target bean class
+ * 
+ * @param <T>
+ *            Target bean class
  */
-public abstract class IdImplementationBase<T> extends ImplementationBase<T> {
+public abstract class IdBaseDao<T> extends BaseDao<T> {
 
 	public abstract long extractPk(T bean);
 

@@ -8,15 +8,16 @@ import android.database.sqlite.SQLiteDatabase;
 /**
  * 
  * @author SMineyev
- *
- * @param <T> Target bean class
+ * 
+ * @param <T>
+ *            Target bean class
  */
 public abstract class BaseDao<T> {
 
 	protected SQLiteDatabase database;
 
 	public abstract android.content.ContentValues createContentValues(T bean);
-	
+
 	public abstract void fillBean(android.database.Cursor cursor, T bean);
 
 	protected abstract void fillBean(android.database.Cursor values,
@@ -73,5 +74,5 @@ public abstract class BaseDao<T> {
 			c.close();
 		}
 	}
-	
+
 }
