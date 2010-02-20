@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         id="com.antlersoft.sqlitegen.SQLiteGenBuilder"
+         name="Generate java source for SQLite beans"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="com.antlersoft.sqlitegen.SQLiteGenBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="com.antlersoft.sqlitegen.SQLiteGenNature"
+         name="Generate Android SQLite beans from annotated interfaces"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="com.antlersoft.sqlitegen.SQLiteGenNature">
+         </run>
+      </runtime>
+      <builder
+            id="com.antlersoft.sqlitegen.SQLiteGenBuilder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="SQLiteGen.contribution1">
+         <action
+               label="SQLiteGen annotation processing"
+               class="com.antlersoft.sqlitegen.ToggleNatureAction"
+               menubarPath="additions"
+               enablesFor="+"
+               id="SQLiteGen.addRemoveNatureAction"
+               state="false"
+               style="toggle">
+         </action>
+      </objectContribution>
+   </extension>
+
+
+</plugin>

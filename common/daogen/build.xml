@@ -1,0 +1,63 @@
+<!--
+Copyright 2005-2009 Michael A. MacDonald
+Please make changes to the sqlitegen_ant.properties file
+
+Requires ant 1.6+
+-->
+<project name="sqlitegen" default="all">
+	<property file="sqlitegen_ant.properties"/>
+	<target name="all" depends="android.db.jar,sqlitegen_eclipse_site"/>
+	<target name="android.db.jar" depends="buildcommon">
+		<mkdir dir="dist"/>
+		<javac source="${sqlitegen.source}" target="${sqlitegen.target}" sourcepath="." classpath="${android.sdk.lib}" destdir="classes">
+			<src path="com/antlersoft/android/dbimpl"/>
+		</javac>
+		<jar destfile="dist/com.antlersoft.android.db_${android.db.version}.jar" basedir="classes"
+		includes="com/antlersoft/android/db/** com/antlersoft/android/dbimpl/**">
+		</jar>
+	</target>
+	<target name="sqlitegen_eclipse" depends="buildeclipse">
+		<mkdir dir="dist"/>
+		<jar destfile="dist/com.antlersoft.sqlitegen.SQLiteGen_${sqlitegen.version}.jar" basedir="classes" manifest="META-INF/MANIFEST.MF"
+		includes="com/antlersoft/** plugin.xml"
+		/>
+	</target>
+	<target name="sqlitegen_eclipse_site" depends="sqlitegen_eclipse">
+		<mkdir dir="dist/site"/>
+		<mkdir dir="dist/site/features"/>
+		<mkdir dir="dist/site/plugins" />
+		<copy todir="dist/site" file="site.xml" />
+		<replace file="dist/site/site.xml" token="7.007.007" value="${sqlitegen.version}"/>
+		<copy todir="dist/site/plugins" file="dist/com.antlersoft.sqlitegen.SQLiteGen_${sqlitegen.version}.jar" />
+		<replace file="feature.xml" token="7.007.007" value="${sqlitegen.version}"/>
+		<zip destfile="dist/site/features/com.antlersoft.sqlitegen_${sqlitegen.version}.jar"
+		basedir="."
+		includes="feature.xml"	
+		/> 
+		<zip destfile="dist/sqlitegen_eclipse_site_${sqlitegen.version}.jar" basedir="dist/site" includes="**"  />
+	</target>
+	<target name="buildcommon">
+		<mkdir dir="classes"/>
+		<javac source="${sqlitegen.source}" target="${sqlitegen.target}" sourcepath="." destdir="classes">
+			<src path="com/antlersoft/android/db;com/antlersoft/android/dbgen;com/antlersoft/classwriter;com/antlersoft/util"/>
+		</javac>
+	</target>
+	<target name="clean">
+		<delete dir="classes"/>
+		<delete dir="dist"/>
+	</target>
+	<target name="buildeclipse" depends="buildcommon">
+		<javac source="${sqlitegen.source}" target="${sqlitegen.target}" sourcepath="." destdir="classes">
+			<classpath>
+			  <pathelement path="${classpath}"/>
+			  <fileset dir="${plugins.path}">
+			    <include name="*.jar"/>
+		      </fileset>
+			</classpath>
+			<src path="com/antlersoft/sqlitegen"/>
+		</javac>
+		<copy todir="classes" file="plugin.xml">
+		</copy>
+		<replace file="META-INF/MANIFEST.MF" token="7.007.007" value="${sqlitegen.version}"/>
+	</target>
+</project>

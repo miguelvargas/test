@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<site>
+<description>
+Site created for adding or updating antlersoft SQLiteGen
+in your Eclipse configuration.
+</description>
+<feature url="features/com.antlersoft.sqlitegen_7.007.007.jar"/>
+</site>
