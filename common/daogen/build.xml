@@ -9,15 +9,15 @@ Requires ant 1.6+
 	<target name="android.db.jar" depends="buildcommon">
 		<mkdir dir="dist"/>
 		<javac source="${sqlitegen.source}" target="${sqlitegen.target}" sourcepath="." classpath="${android.sdk.lib}" destdir="classes">
-			<src path="com/mvwsolutions/android/dbimpl"/>
+			<src path="src/com/mvwsolutions/android/dao"/>
 		</javac>
 		<jar destfile="dist/com.mvwsolutions.android.db_${android.db.version}.jar" basedir="classes"
-		includes="com/mvwsolutions/android/db/** com/mvwsolutions/android/dbimpl/**">
+		includes="com/mvwsolutions/android/db/** com/mvwsolutions/android/dao/**">
 		</jar>
 	</target>
 	<target name="sqlitegen_eclipse" depends="buildeclipse">
 		<mkdir dir="dist"/>
-		<jar destfile="dist/com.mvwsolutions.sqlitegen.SQLiteGen_${sqlitegen.version}.jar" basedir="classes" manifest="META-INF/MANIFEST.MF"
+		<jar destfile="dist/com.mvwsolutions.sqlitegen.SQLiteGen_${sqlitegen.version}.jar" basedir="classes" manifest="src/META-INF/MANIFEST.MF"
 		includes="com/mvwsolutions/** plugin.xml"
 		/>
 	</target>
@@ -38,7 +38,7 @@ Requires ant 1.6+
 	<target name="buildcommon">
 		<mkdir dir="classes"/>
 		<javac source="${sqlitegen.source}" target="${sqlitegen.target}" sourcepath="." destdir="classes">
-			<src path="com/mvwsolutions/android/db;com/mvwsolutions/android/dbgen;com/mvwsolutions/classwriter;com/mvwsolutions/util"/>
+			<src path="src/com/mvwsolutions/android/db;src/com/mvwsolutions/android/dbgen;src/com/mvwsolutions/classwriter;src/com/mvwsolutions/util"/>
 		</javac>
 	</target>
 	<target name="clean">
@@ -53,10 +53,10 @@ Requires ant 1.6+
 			    <include name="*.jar"/>
 		      </fileset>
 			</classpath>
-			<src path="com/mvwsolutions/sqlitegen"/>
+			<src path="src2/com/mvwsolutions/sqlitegen"/>
 		</javac>
 		<copy todir="classes" file="plugin.xml">
 		</copy>
-		<replace file="META-INF/MANIFEST.MF" token="7.007.007" value="${sqlitegen.version}"/>
+		<replace file="src/META-INF/MANIFEST.MF" token="7.007.007" value="${sqlitegen.version}"/>
 	</target>
 </project>

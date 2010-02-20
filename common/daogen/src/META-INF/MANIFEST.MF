@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: DaoGen Plug-in
 Bundle-SymbolicName: com.mvwsolutions.sqlitegen.DaoGen;singleton:=true
-Bundle-Version: 7.007.007
+Bundle-Version: 0.1.16
 Bundle-Activator: com.mvwsolutions.sqlitegen.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

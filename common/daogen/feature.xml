@@ -2,7 +2,7 @@
 <feature
       id="com.mvwsolutions.sqlitegen"
       label="Android SQLite Code Generator"
-      version="7.007.007"
+      version="0.1.16"
       provider-name="mvwsolutions">
 
    <description url="http://code.google.com/p/sqlitegen/">
@@ -314,6 +314,6 @@ POSSIBILITY OF SUCH DAMAGES.
          id="com.mvwsolutions.sqlitegen.SQLiteGen"
          download-size="0"
          install-size="0"
-         version="7.007.007"/>
+         version="0.1.16"/>
 
 </feature>
