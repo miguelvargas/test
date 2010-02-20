@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="com.antlersoft.sqlitegen"
+      id="com.mvwsolutions.sqlitegen"
       label="Android SQLite Code Generator"
       version="7.007.007"
-      provider-name="antlersoft">
+      provider-name="mvwsolutions">
 
    <description url="http://code.google.com/p/sqlitegen/">
    Generates SQLite data access code for android from annotations in an interface.
@@ -311,7 +311,7 @@ POSSIBILITY OF SUCH DAMAGES.
    </requires>
 
    <plugin
-         id="com.antlersoft.sqlitegen.SQLiteGen"
+         id="com.mvwsolutions.sqlitegen.SQLiteGen"
          download-size="0"
          install-size="0"
          version="7.007.007"/>

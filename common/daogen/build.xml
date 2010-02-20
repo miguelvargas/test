@@ -10,16 +10,16 @@ Requires ant 1.6+
 	<target name="android.db.jar" depends="buildcommon">
 		<mkdir dir="dist"/>
 		<javac source="${sqlitegen.source}" target="${sqlitegen.target}" sourcepath="." classpath="${android.sdk.lib}" destdir="classes">
-			<src path="com/antlersoft/android/dbimpl"/>
+			<src path="com/mvwsolutions/android/dbimpl"/>
 		</javac>
-		<jar destfile="dist/com.antlersoft.android.db_${android.db.version}.jar" basedir="classes"
-		includes="com/antlersoft/android/db/** com/antlersoft/android/dbimpl/**">
+		<jar destfile="dist/com.mvwsolutions.android.db_${android.db.version}.jar" basedir="classes"
+		includes="com/mvwsolutions/android/db/** com/mvwsolutions/android/dbimpl/**">
 		</jar>
 	</target>
 	<target name="sqlitegen_eclipse" depends="buildeclipse">
 		<mkdir dir="dist"/>
-		<jar destfile="dist/com.antlersoft.sqlitegen.SQLiteGen_${sqlitegen.version}.jar" basedir="classes" manifest="META-INF/MANIFEST.MF"
-		includes="com/antlersoft/** plugin.xml"
+		<jar destfile="dist/com.mvwsolutions.sqlitegen.SQLiteGen_${sqlitegen.version}.jar" basedir="classes" manifest="META-INF/MANIFEST.MF"
+		includes="com/mvwsolutions/** plugin.xml"
 		/>
 	</target>
 	<target name="sqlitegen_eclipse_site" depends="sqlitegen_eclipse">
@@ -28,9 +28,9 @@ Requires ant 1.6+
 		<mkdir dir="dist/site/plugins" />
 		<copy todir="dist/site" file="site.xml" />
 		<replace file="dist/site/site.xml" token="7.007.007" value="${sqlitegen.version}"/>
-		<copy todir="dist/site/plugins" file="dist/com.antlersoft.sqlitegen.SQLiteGen_${sqlitegen.version}.jar" />
+		<copy todir="dist/site/plugins" file="dist/com.mvwsolutions.sqlitegen.SQLiteGen_${sqlitegen.version}.jar" />
 		<replace file="feature.xml" token="7.007.007" value="${sqlitegen.version}"/>
-		<zip destfile="dist/site/features/com.antlersoft.sqlitegen_${sqlitegen.version}.jar"
+		<zip destfile="dist/site/features/com.mvwsolutions.sqlitegen_${sqlitegen.version}.jar"
 		basedir="."
 		includes="feature.xml"	
 		/> 
@@ -39,7 +39,7 @@ Requires ant 1.6+
 	<target name="buildcommon">
 		<mkdir dir="classes"/>
 		<javac source="${sqlitegen.source}" target="${sqlitegen.target}" sourcepath="." destdir="classes">
-			<src path="com/antlersoft/android/db;com/antlersoft/android/dbgen;com/antlersoft/classwriter;com/antlersoft/util"/>
+			<src path="com/mvwsolutions/android/db;com/mvwsolutions/android/dbgen;com/mvwsolutions/classwriter;com/mvwsolutions/util"/>
 		</javac>
 	</target>
 	<target name="clean">
@@ -54,7 +54,7 @@ Requires ant 1.6+
 			    <include name="*.jar"/>
 		      </fileset>
 			</classpath>
-			<src path="com/antlersoft/sqlitegen"/>
+			<src path="com/mvwsolutions/sqlitegen"/>
 		</javac>
 		<copy todir="classes" file="plugin.xml">
 		</copy>
