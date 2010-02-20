@@ -1,4 +1,4 @@
-package com.antlersoft.android.dbimpl;
+package com.antlersoft.android.dao;
 
 import java.util.Collection;
 
@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
  *
  * @param <T> Target bean class
  */
-public abstract class ImplementationBase<T> {
+public abstract class BaseDao<T> {
 
 	protected SQLiteDatabase database;
 
