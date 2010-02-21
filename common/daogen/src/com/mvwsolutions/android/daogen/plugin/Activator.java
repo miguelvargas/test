@@ -1,4 +1,4 @@
-package com.mvwsolutions.daogen;
+package com.mvwsolutions.android.daogen.plugin;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;

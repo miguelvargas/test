@@ -9,7 +9,7 @@
       <builder
             hasNature="true">
          <run
-               class="com.mvwsolutions.daogen.DaoGenBuilder">
+               class="com.mvwsolutions.android.daogen.plugin.DaoGenBuilder">
          </run>
       </builder>
    </extension>
@@ -19,7 +19,7 @@
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="com.mvwsolutions.daogen.DaoGenNature">
+               class="com.mvwsolutions.android.daogen.plugin.DaoGenNature">
          </run>
       </runtime>
       <builder
@@ -35,7 +35,7 @@
             id="DaoGen.contribution1">
          <action
                label="DaoGen annotation processing"
-               class="com.mvwsolutions.daogen.ToggleNatureAction"
+               class="com.mvwsolutions.android.daogen.plugin.ToggleNatureAction"
                menubarPath="additions"
                enablesFor="+"
                id="DaoGen.addRemoveNatureAction"

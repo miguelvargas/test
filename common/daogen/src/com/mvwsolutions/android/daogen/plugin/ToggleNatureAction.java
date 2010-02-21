@@ -1,4 +1,4 @@
-package com.mvwsolutions.daogen;
+package com.mvwsolutions.android.daogen.plugin;
 
 import java.util.Iterator;
 
