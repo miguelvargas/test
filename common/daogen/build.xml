@@ -1,18 +1,9 @@
 <project name="daogen" default="all">
 	<property file="daogen_ant.properties"/>
-	<target name="all" depends="android.db.jar,daogen_eclipse_site"/>
-	<target name="android.db.jar" depends="buildcommon">
-		<mkdir dir="dist"/>
-		<javac source="${daogen.source}" target="${daogen.target}" sourcepath="." classpath="${android.sdk.lib}" destdir="classes">
-			<src path="src/com/mvwsolutions/android/dao"/>
-		</javac>
-		<jar destfile="dist/com.mvwsolutions.android.db_${android.db.version}.jar" basedir="classes"
-		includes="com/mvwsolutions/android/db/** com/mvwsolutions/android/dao/**">
-		</jar>
-	</target>
+	<target name="all" depends="buildcommon,daogen_eclipse_site"/>
 	<target name="daogen_eclipse" depends="buildeclipse">
 		<mkdir dir="dist"/>
-		<jar destfile="dist/com.mvwsolutions.daogen.DaoGen_${daogen.version}.jar" basedir="classes" manifest="src/META-INF/MANIFEST.MF"
+		<jar destfile="dist/com.mvwsolutions.daogen.DaoGen_${daogen.version}.jar" basedir="bin" manifest="bin/META-INF/MANIFEST.MF"
 		includes="com/mvwsolutions/** plugin.xml"
 		/>
 	</target>
@@ -31,27 +22,15 @@
 		<zip destfile="dist/daogen_eclipse_site_${daogen.version}.jar" basedir="dist/site" includes="**"  />
 	</target>
 	<target name="buildcommon">
-		<mkdir dir="classes"/>
-		<javac source="${daogen.source}" target="${daogen.target}" sourcepath="." destdir="classes">
-			<src path="src/com/mvwsolutions/android/dao/meta;src/com/mvwsolutions/android/daogen;src/com/mvwsolutions/classwriter;src/com/mvwsolutions/util"/>
-		</javac>
+		<copydir dest="classes" src="../Dao/bin"/>
 	</target>
 	<target name="clean">
-		<delete dir="classes"/>
+		<delete dir="bin"/>
 		<delete dir="dist"/>
 	</target>
 	<target name="buildeclipse" depends="buildcommon">
-		<javac source="${daogen.source}" target="${daogen.target}" sourcepath="." destdir="classes">
-			<classpath>
-			  <pathelement path="${classpath}"/>
-			  <fileset dir="${plugins.path}">
-			    <include name="*.jar"/>
-		      </fileset>
-			</classpath>
-			<src path="src2/com/mvwsolutions/daogen"/>
-		</javac>
-		<copy todir="classes" file="plugin.xml">
+		<copy todir="bin" file="plugin.xml">
 		</copy>
-		<replace file="src/META-INF/MANIFEST.MF" token="7.007.007" value="${daogen.version}"/>
+		<replace file="bin/META-INF/MANIFEST.MF" token="7.007.007" value="${daogen.version}"/>
 	</target>
 </project>
