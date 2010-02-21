@@ -22,7 +22,7 @@
 		<zip destfile="dist/daogen_eclipse_site_${daogen.version}.jar" basedir="dist/site" includes="**"  />
 	</target>
 	<target name="buildcommon">
-		<copydir dest="classes" src="../Dao/bin"/>
+		<copydir dest="bin" src="../Dao/bin"/>
 	</target>
 	<target name="clean">
 		<delete dir="bin"/>
