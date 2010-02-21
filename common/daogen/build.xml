@@ -33,7 +33,7 @@
 	<target name="buildcommon">
 		<mkdir dir="classes"/>
 		<javac source="${daogen.source}" target="${daogen.target}" sourcepath="." destdir="classes">
-			<src path="src/com/mvwsolutions/android/db;src/com/mvwsolutions/android/dbgen;src/com/mvwsolutions/classwriter;src/com/mvwsolutions/util"/>
+			<src path="src/com/mvwsolutions/android/dao/meta;src/com/mvwsolutions/android/daogen;src/com/mvwsolutions/classwriter;src/com/mvwsolutions/util"/>
 		</javac>
 	</target>
 	<target name="clean">
