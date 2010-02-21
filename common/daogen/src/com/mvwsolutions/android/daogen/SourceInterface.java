@@ -1,16 +1,8 @@
-/**
- * Copyright (C) 2008 Michael A. MacDonald
- */
-package com.mvwsolutions.android.dbgen;
+package com.mvwsolutions.android.daogen;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * Interface with file system or hosting IDE
- * @author Michael A. MacDonald
- *
- */
 public interface SourceInterface {
 	
 	/**
@@ -28,8 +20,6 @@ public interface SourceInterface {
 
 	/**
 	 * Exception indicating a non-IO problem in the SourceInterface implementation
-	 * @author Michael A. MacDonald
-	 *
 	 */
 	public class SIException extends Exception {
 

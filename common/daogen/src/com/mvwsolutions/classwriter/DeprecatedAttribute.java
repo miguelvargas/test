@@ -4,8 +4,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 class DeprecatedAttribute implements Attribute {
-	
-	static final String typeString="Deprecated";
+
+	static final String typeString = "Deprecated";
 
 	public void write(DataOutputStream classStream) throws IOException {
 	}

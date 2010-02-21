@@ -1,4 +1,4 @@
-package com.antlersoft.sqlitegen;
+package com.mvwsolutions.daogen;
 
 import java.io.IOException;
 
@@ -18,13 +18,13 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 
-import com.antlersoft.android.dbgen.SourceFileGenerator;
-import com.antlersoft.android.dbgen.SourceInterface;
+import com.mvwsolutions.android.daogen.SourceFileGenerator;
+import com.mvwsolutions.android.daogen.SourceInterface;
 
-import com.antlersoft.classwriter.ClassWriter;
-import com.antlersoft.classwriter.CodeCheckException;
+import com.mvwsolutions.classwriter.ClassWriter;
+import com.mvwsolutions.classwriter.CodeCheckException;
 
-public class SQLiteGenBuilder extends IncrementalProjectBuilder {
+public class DaoGenBuilder extends IncrementalProjectBuilder {
 
 	class DeltaVisitor implements IResourceDeltaVisitor {
 		
@@ -124,7 +124,7 @@ public class SQLiteGenBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
-	public static final String BUILDER_ID = "com.antlersoft.sqlitegen.SQLiteGenBuilder";
+	public static final String BUILDER_ID = "com.mvwsolutions.daogen.DaoGenBuilder";
 
 	/*
 	 * (non-Javadoc)

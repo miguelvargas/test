@@ -1,13 +1,10 @@
-/**
- * Copyright (C) 2008 Michael A. MacDonald
- */
-package com.mvwsolutions.android.db;
+package com.mvwsolutions.android.dao.meta;
 
 import java.lang.annotation.*;
 
 /**
- * Marks an accessor method as corresponding to a field in the table for this type
- * @author Michael A. MacDonald
+ * Bean field annotation which used for db and dao generation
+ * @author SMineyev
  *
  */
 @Retention(RetentionPolicy.CLASS)

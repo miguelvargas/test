@@ -1,10 +1,8 @@
-/**
- * Copyright (C) 2008 Michael A. MacDonald
- */
-package com.mvwsolutions.android.db;
+package com.mvwsolutions.android.dao.meta;
 
 /**
- * @author Michael A. MacDonald
+ * Enum of supported field types
+ * @author SMineyev
  *
  */
 public enum FieldType {

@@ -1,20 +1,12 @@
-/**
- * Copyright (C) 2008 Michael A. MacDonald
- */
-package com.mvwsolutions.android.dbgen;
+package com.mvwsolutions.android.daogen;
 
 import java.io.PrintWriter;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 
-import com.mvwsolutions.android.db.FieldType;
+import com.mvwsolutions.android.dao.meta.FieldType;
 import com.mvwsolutions.classwriter.TypeParse;
 
-/**
- * Table properties as defined by annotations on interface class
- * @author Michael A. MacDonald
- *
- */
 class TableDefinition {
 	String packageName;
 	String name;

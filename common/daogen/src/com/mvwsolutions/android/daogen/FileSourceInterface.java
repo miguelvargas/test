@@ -1,7 +1,4 @@
-/**
- * Copyright (C) 2008 Michael A. MacDonald
- */
-package com.mvwsolutions.android.dbgen;
+package com.mvwsolutions.android.daogen;
 
 import java.util.StringTokenizer;
 
@@ -12,11 +9,6 @@ import java.io.PrintWriter;
 
 import com.mvwsolutions.classwriter.ClassWriter;
 
-/**
- * An interface to a source tree based on the java.io.File filesystem abstraction
- * @author Michael A. MacDonald
- *
- */
 public class FileSourceInterface implements SourceInterface {
 	
 	private File base;
@@ -30,14 +22,14 @@ public class FileSourceInterface implements SourceInterface {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mvwsolutions.android.dbgen.SourceInterface#doneWithWriter()
+	 * @see com.mvwsolutions.android.daogen.SourceInterface#doneWithWriter()
 	 */
 	public void doneWithWriter( PrintWriter w) throws IOException, SIException {
 		w.close();
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mvwsolutions.android.dbgen.SourceInterface#getWriterForClass(java.lang.String, java.lang.String)
+	 * @see com.mvwsolutions.android.daogen.SourceInterface#getWriterForClass(java.lang.String, java.lang.String)
 	 */
 	public PrintWriter getWriterForClass(String packageName, String className)
 			throws IOException, SIException {

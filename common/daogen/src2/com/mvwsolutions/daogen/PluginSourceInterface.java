@@ -1,7 +1,4 @@
-/**
- * Copyright (C) 2009 Michael A. MacDonald
- */
-package com.antlersoft.sqlitegen;
+package com.mvwsolutions.daogen;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,12 +12,8 @@ import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaModelException;
 
-import com.antlersoft.android.dbgen.SourceInterface;
+import com.mvwsolutions.android.daogen.SourceInterface;
 
-/**
- * @author Michael A. MacDonald
- *
- */
 public class PluginSourceInterface implements SourceInterface {
 	
 	private ArrayList<IPackageFragmentRoot> sourceRoots;
@@ -69,14 +62,14 @@ public class PluginSourceInterface implements SourceInterface {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.antlersoft.android.dbgen.SourceInterface#doneWithWriter(java.io.PrintWriter)
+	 * @see com.mvwsolutions.android.daogen.SourceInterface#doneWithWriter(java.io.PrintWriter)
 	 */
 	public void doneWithWriter(PrintWriter w) throws IOException, SIException {
 		((PluginSourceWriter)w).done();
 	}
 
 	/* (non-Javadoc)
-	 * @see com.antlersoft.android.dbgen.SourceInterface#getWriterForClass(java.lang.String, java.lang.String)
+	 * @see com.mvwsolutions.android.daogen.SourceInterface#getWriterForClass(java.lang.String, java.lang.String)
 	 */
 	public PrintWriter getWriterForClass(String packageName, String className)
 			throws IOException, SIException {

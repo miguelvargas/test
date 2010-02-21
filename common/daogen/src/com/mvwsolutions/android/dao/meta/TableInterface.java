@@ -1,13 +1,10 @@
-/**
- * Copyright (C) 2008 Michael A. MacDonald
- */
-package com.mvwsolutions.android.db;
+package com.mvwsolutions.android.dao.meta;
 
 import java.lang.annotation.*;
 
 /**
- * Annotation assigned to an interface that will be used to define a table for the code generator
- * @author Michael A. MacDonald
+ * Bean class annotation which used for db and dao generation
+ * @author SMineyev
  *
  */
 @Retention(RetentionPolicy.CLASS)

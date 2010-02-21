@@ -1,43 +1,38 @@
-<!--
-Please make changes to the daogen_ant.properties file
-
-Requires ant 1.6+
--->
-<project name="sqlitegen" default="all">
+<project name="daogen" default="all">
 	<property file="daogen_ant.properties"/>
-	<target name="all" depends="android.db.jar,sqlitegen_eclipse_site"/>
+	<target name="all" depends="android.db.jar,daogen_eclipse_site"/>
 	<target name="android.db.jar" depends="buildcommon">
 		<mkdir dir="dist"/>
-		<javac source="${sqlitegen.source}" target="${sqlitegen.target}" sourcepath="." classpath="${android.sdk.lib}" destdir="classes">
+		<javac source="${daogen.source}" target="${daogen.target}" sourcepath="." classpath="${android.sdk.lib}" destdir="classes">
 			<src path="src/com/mvwsolutions/android/dao"/>
 		</javac>
 		<jar destfile="dist/com.mvwsolutions.android.db_${android.db.version}.jar" basedir="classes"
 		includes="com/mvwsolutions/android/db/** com/mvwsolutions/android/dao/**">
 		</jar>
 	</target>
-	<target name="sqlitegen_eclipse" depends="buildeclipse">
+	<target name="daogen_eclipse" depends="buildeclipse">
 		<mkdir dir="dist"/>
-		<jar destfile="dist/com.mvwsolutions.sqlitegen.SQLiteGen_${sqlitegen.version}.jar" basedir="classes" manifest="src/META-INF/MANIFEST.MF"
+		<jar destfile="dist/com.mvwsolutions.daogen.DaoGen_${daogen.version}.jar" basedir="classes" manifest="src/META-INF/MANIFEST.MF"
 		includes="com/mvwsolutions/** plugin.xml"
 		/>
 	</target>
-	<target name="sqlitegen_eclipse_site" depends="sqlitegen_eclipse">
+	<target name="daogen_eclipse_site" depends="daogen_eclipse">
 		<mkdir dir="dist/site"/>
 		<mkdir dir="dist/site/features"/>
 		<mkdir dir="dist/site/plugins" />
 		<copy todir="dist/site" file="site.xml" />
-		<replace file="dist/site/site.xml" token="7.007.007" value="${sqlitegen.version}"/>
-		<copy todir="dist/site/plugins" file="dist/com.mvwsolutions.sqlitegen.SQLiteGen_${sqlitegen.version}.jar" />
-		<replace file="feature.xml" token="7.007.007" value="${sqlitegen.version}"/>
-		<zip destfile="dist/site/features/com.mvwsolutions.sqlitegen_${sqlitegen.version}.jar"
+		<replace file="dist/site/site.xml" token="7.007.007" value="${daogen.version}"/>
+		<copy todir="dist/site/plugins" file="dist/com.mvwsolutions.daogen.DaoGen_${daogen.version}.jar" />
+		<replace file="feature.xml" token="7.007.007" value="${daogen.version}"/>
+		<zip destfile="dist/site/features/com.mvwsolutions.daogen_${daogen.version}.jar"
 		basedir="."
 		includes="feature.xml"	
 		/> 
-		<zip destfile="dist/sqlitegen_eclipse_site_${sqlitegen.version}.jar" basedir="dist/site" includes="**"  />
+		<zip destfile="dist/daogen_eclipse_site_${daogen.version}.jar" basedir="dist/site" includes="**"  />
 	</target>
 	<target name="buildcommon">
 		<mkdir dir="classes"/>
-		<javac source="${sqlitegen.source}" target="${sqlitegen.target}" sourcepath="." destdir="classes">
+		<javac source="${daogen.source}" target="${daogen.target}" sourcepath="." destdir="classes">
 			<src path="src/com/mvwsolutions/android/db;src/com/mvwsolutions/android/dbgen;src/com/mvwsolutions/classwriter;src/com/mvwsolutions/util"/>
 		</javac>
 	</target>
@@ -46,17 +41,17 @@ Requires ant 1.6+
 		<delete dir="dist"/>
 	</target>
 	<target name="buildeclipse" depends="buildcommon">
-		<javac source="${sqlitegen.source}" target="${sqlitegen.target}" sourcepath="." destdir="classes">
+		<javac source="${daogen.source}" target="${daogen.target}" sourcepath="." destdir="classes">
 			<classpath>
 			  <pathelement path="${classpath}"/>
 			  <fileset dir="${plugins.path}">
 			    <include name="*.jar"/>
 		      </fileset>
 			</classpath>
-			<src path="src2/com/mvwsolutions/sqlitegen"/>
+			<src path="src2/com/mvwsolutions/daogen"/>
 		</javac>
 		<copy todir="classes" file="plugin.xml">
 		</copy>
-		<replace file="src/META-INF/MANIFEST.MF" token="7.007.007" value="${sqlitegen.version}"/>
+		<replace file="src/META-INF/MANIFEST.MF" token="7.007.007" value="${daogen.version}"/>
 	</target>
 </project>

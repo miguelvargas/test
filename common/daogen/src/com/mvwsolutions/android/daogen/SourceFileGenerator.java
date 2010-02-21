@@ -1,20 +1,13 @@
-/**
- * Copyright (C) 2008 Michael A. MacDonald
- */
-package com.mvwsolutions.android.dbgen;
+package com.mvwsolutions.android.daogen;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 
-import com.mvwsolutions.android.db.FieldType;
-import com.mvwsolutions.android.db.FieldVisibility;
+import com.mvwsolutions.android.dao.meta.FieldType;
+import com.mvwsolutions.android.dao.meta.FieldVisibility;
 import com.mvwsolutions.classwriter.*;
 
-/**
- * @author Michael A. MacDonald
- *
- */
 public class SourceFileGenerator {
 	
 	private SourceInterface sourceBase;
@@ -54,7 +47,7 @@ public class SourceFileGenerator {
 			{
 				for ( Annotation a : annotations.getAnnotations())
 				{
-					if ( cw.getString(a.getClassIndex()).equals("Lcom/mvwsolutions/android/db/TableInterface;"))
+					if ( cw.getString(a.getClassIndex()).equals("Lcom/mvwsolutions/android/dao/meta/TableInterface;"))
 					{
 						result=true;
 						readTableInterface(cw, a, td);
@@ -66,7 +59,7 @@ public class SourceFileGenerator {
 							{
 								for ( Annotation methodAnnotation : methodAnnotations.getAnnotations())
 								{
-									if (cw.getString(methodAnnotation.getClassIndex()).equals("Lcom/mvwsolutions/android/db/FieldAccessor;"))
+									if (cw.getString(methodAnnotation.getClassIndex()).equals("Lcom/mvwsolutions/android/dao/meta/FieldAccessor;"))
 									{
 										readFieldDefinition(cw,mi,methodAnnotation,td);
 									}

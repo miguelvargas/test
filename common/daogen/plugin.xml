@@ -3,27 +3,27 @@
 <plugin>
 
    <extension
-         id="com.antlersoft.sqlitegen.SQLiteGenBuilder"
-         name="Generate java source for SQLite beans"
+         id="com.mvwsolutions.daogen.DaoGenBuilder"
+         name="com.mvwsolutions.daogengen.DaoGenBuilder"
          point="org.eclipse.core.resources.builders">
       <builder
             hasNature="true">
          <run
-               class="com.antlersoft.sqlitegen.SQLiteGenBuilder">
+               class="com.mvwsolutions.daogen.DaoGenBuilder">
          </run>
       </builder>
    </extension>
    <extension
-         id="com.antlersoft.sqlitegen.SQLiteGenNature"
-         name="Generate Android SQLite beans from annotated interfaces"
+         id="com.mvwsolutions.daogen.DaoGenNature"
+         name="com.mvwsolutions.daogen.DaoGenNature"
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="com.antlersoft.sqlitegen.SQLiteGenNature">
+               class="com.mvwsolutions.daogen.DaoGenNature">
          </run>
       </runtime>
       <builder
-            id="com.antlersoft.sqlitegen.SQLiteGenBuilder">
+            id="com.mvwsolutions.daogen.DaoGenBuilder">
       </builder>
    </extension>
    <extension
@@ -32,13 +32,13 @@
             adaptable="true"
             objectClass="org.eclipse.core.resources.IProject"
             nameFilter="*"
-            id="SQLiteGen.contribution1">
+            id="DaoGen.contribution1">
          <action
-               label="SQLiteGen annotation processing"
-               class="com.antlersoft.sqlitegen.ToggleNatureAction"
+               label="DaoGen annotation processing"
+               class="com.mvwsolutions.daogen.ToggleNatureAction"
                menubarPath="additions"
                enablesFor="+"
-               id="SQLiteGen.addRemoveNatureAction"
+               id="DaoGen.addRemoveNatureAction"
                state="false"
                style="toggle">
          </action>

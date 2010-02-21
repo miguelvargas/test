@@ -1,4 +1,4 @@
-package com.antlersoft.sqlitegen;
+package com.mvwsolutions.daogen;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -14,7 +14,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "com.antlersoft.sqlitegen.SQLiteGen";
+	public static final String PLUGIN_ID = "com.mvwsolutions.daogen.SQLiteGen";
 
 	// The shared instance
 	private static Activator plugin;

@@ -1,16 +1,8 @@
-/**
- * Copyright (C) 2008 Michael A. MacDonald
- */
-package com.mvwsolutions.android.dbgen;
+package com.mvwsolutions.android.daogen;
 
-import com.mvwsolutions.android.db.FieldType;
-import com.mvwsolutions.android.db.FieldVisibility;
+import com.mvwsolutions.android.dao.meta.FieldType;
+import com.mvwsolutions.android.dao.meta.FieldVisibility;
 
-/**
- * Definition of a single column in a table, as defined by annotations in the interface
- * @author Michael A. MacDonald
- *
- */
 class FieldDefinition {
 	/**
      * Name as it appears in java

@@ -1,6 +1,3 @@
-/**
- * Copyright (c) 2008 Michael A. MacDonald
- */
 package com.mvwsolutions.classwriter;
 
 import java.io.DataInputStream;
@@ -9,21 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.mvwsolutions.classwriter.ClassWriter.CPClass;
-import com.mvwsolutions.classwriter.ClassWriter.CPDouble;
-import com.mvwsolutions.classwriter.ClassWriter.CPFloat;
-import com.mvwsolutions.classwriter.ClassWriter.CPInteger;
-import com.mvwsolutions.classwriter.ClassWriter.CPLong;
-import com.mvwsolutions.classwriter.ClassWriter.CPNameAndType;
-import com.mvwsolutions.classwriter.ClassWriter.CPString;
-import com.mvwsolutions.classwriter.ClassWriter.CPTypeRef;
-import com.mvwsolutions.classwriter.ClassWriter.CPUtf8;
-
-/**
- * An annotation stored in the Java class file as described in JSR-175
- * @author Michael A. MacDonald
- *
- */
 public class Annotation implements AnnotationInfo {
 	private int type;
 	private int numElementValues;
@@ -134,8 +116,6 @@ public class Annotation implements AnnotationInfo {
 
 	/**
 	 * One element name-value pair in an annotation.
-	 * @author Michael A. MacDonald
-	 *
 	 */
 	public static class ElementValuePair implements AnnotationInfo
 	{
@@ -172,8 +152,6 @@ public class Annotation implements AnnotationInfo {
 	
 	/**
 	 * Discriminated union of value types
-	 * @author Michael A. MacDonald
-	 *
 	 */
 	public static class ElementValue
 	{
@@ -197,8 +175,6 @@ public class Annotation implements AnnotationInfo {
 	
 	/**
 	 * Base class for value types within an ElementValue.
-	 * @author Michael A. MacDonald
-	 *
 	 */
 	public abstract static class ValueBase implements AnnotationInfo
 	{
@@ -238,8 +214,6 @@ public class Annotation implements AnnotationInfo {
 	
 	/**
 	 * Annotation value is a constant in the constant pool
-	 * @author Michael A. MacDonald
-	 *
 	 */
 	public static class ConstPoolValue extends ValueBase
 	{
@@ -302,8 +276,6 @@ public class Annotation implements AnnotationInfo {
 	
 	/**
 	 * Annotation value is an enumeration value
-	 * @author Michael A. MacDonald
-	 *
 	 */
 	public static class EnumValue extends ValueBase
 	{
@@ -340,8 +312,6 @@ public class Annotation implements AnnotationInfo {
 	}
 	/**
 	 * Annotation value is string in pool representing a type
-	 * @author Michael A. MacDonald
-	 *
 	 */
 	public static class ClassValue extends ValueBase
 	{
@@ -366,8 +336,6 @@ public class Annotation implements AnnotationInfo {
 	}
 	/**
 	 * Annotation value is an annotation
-	 * @author Michael A. MacDonald
-	 *
 	 */
 	public static class AnnotationValue extends ValueBase
 	{
@@ -401,8 +369,6 @@ public class Annotation implements AnnotationInfo {
 	}
 	/**
 	 * Annotation value is an array of values
-	 * @author Michael A. MacDonald
-	 *
 	 */
 	public static class ArrayValue extends ValueBase {
 		private int numElements;

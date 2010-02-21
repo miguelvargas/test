@@ -1,13 +1,13 @@
-package com.mvw;
+package com.mvwsolutions;
 
 import java.io.File;
 import java.io.FileInputStream;
 
 import org.junit.Test;
 
-import com.antlersoft.android.dbgen.FileSourceInterface;
-import com.antlersoft.android.dbgen.SourceFileGenerator;
-import com.antlersoft.classwriter.ClassWriter;
+import com.mvwsolutions.android.daogen.FileSourceInterface;
+import com.mvwsolutions.android.daogen.SourceFileGenerator;
+import com.mvwsolutions.classwriter.ClassWriter;
 
 public class SourceFileGeneratorTest {
 
