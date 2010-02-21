@@ -22,8 +22,8 @@
         
         <module>common/maven/global-parent</module>
         
-        <module>common/dao</module>
-        <module>common/daogen</module>
+        <module>common/android/dao</module>
+        <module>common/android/daogen</module>
 
     </modules>
 

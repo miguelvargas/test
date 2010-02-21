@@ -14,8 +14,8 @@
     <name>Andriod common DAO</name>
 
     <scm>
-        <connection>scm:svn:file:///var/svn/repos/...</connection>
-        <developerConnection>scm:svn:file:///var/svn/repos/...</developerConnection>
+        <connection>scm:svn:file:///var/svn/repos/common/android/dao</connection>
+        <developerConnection>scm:svn:file:///var/svn/repos/common/android/dao</developerConnection>
         <tag>HEAD</tag>
     </scm>    
 

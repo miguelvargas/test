@@ -14,8 +14,8 @@
     <name>Andriod DAO generator (Eclipse plugin)</name>
 
     <scm>
-        <connection>scm:svn:file:///var/svn/repos/...</connection>
-        <developerConnection>scm:svn:file:///var/svn/repos/...</developerConnection>
+        <connection>scm:svn:file:///var/svn/repos/common/android/daogen</connection>
+        <developerConnection>scm:svn:file:///var/svn/repos/common/android/daogen</developerConnection>
         <tag>HEAD</tag>
     </scm>    
 
