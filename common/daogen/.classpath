@@ -5,7 +5,6 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="lib" path="C:/bin/android-sdk-windows/platforms/android-2.1/android.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="C:/bin/eclipse/plugins/org.eclipse.equinox.common_3.5.1.R35x_v20090807-1100.jar"/>
 	<classpathentry kind="lib" path="C:/bin/eclipse/plugins/org.eclipse.jface_3.5.1.M20090826-0800.jar"/>

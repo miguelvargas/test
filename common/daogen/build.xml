@@ -3,7 +3,7 @@
 	<target name="all" depends="buildcommon,daogen_eclipse_site"/>
 	<target name="daogen_eclipse" depends="buildeclipse">
 		<mkdir dir="dist"/>
-		<jar destfile="dist/com.mvwsolutions.daogen.DaoGen_${daogen.version}.jar" basedir="bin" manifest="bin/META-INF/MANIFEST.MF"
+		<jar destfile="dist/com.mvwsolutions.daogen.DaoGen_${daogen.version}.jar" basedir="target/classes" manifest="target/classes/META-INF/MANIFEST.MF"
 		includes="com/mvwsolutions/** plugin.xml"
 		/>
 	</target>
@@ -22,15 +22,19 @@
 		<zip destfile="dist/daogen_eclipse_site_${daogen.version}.jar" basedir="dist/site" includes="**"  />
 	</target>
 	<target name="buildcommon">
-		<copydir dest="bin" src="../Dao/bin"/>
+		<copydir dest="target/classes" src="../Dao/target/classes"/>
 	</target>
 	<target name="clean">
-		<delete dir="bin"/>
+		<delete dir="target/classes"/>
 		<delete dir="dist"/>
 	</target>
 	<target name="buildeclipse" depends="buildcommon">
-		<copy todir="bin" file="plugin.xml">
+		<copy todir="target/classes" file="plugin.xml">
 		</copy>
-		<replace file="bin/META-INF/MANIFEST.MF" token="7.007.007" value="${daogen.version}"/>
+
+		<copy todir="target/classes/META-INF" file="src/META-INF/MANIFEST.MF">
+		</copy>
+
+		<replace file="target/classes/META-INF/MANIFEST.MF" token="7.007.007" value="${daogen.version}"/>
 	</target>
 </project>
