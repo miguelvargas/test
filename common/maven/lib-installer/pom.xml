@@ -5,14 +5,14 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mvwsolutions</groupId>
-    <artifactId>maven-lib-installer</artifactId>
+    <artifactId>lib-installer</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>Third party lib installer</name>
     
     <scm>
-        <connection>scm:svn:file:///var/svn/repos/common/maven/global-parent/lib-installer</connection>
-        <developerConnection>scm:svn:file:///var/svn/repos/common/maven/global-parent/lib-installer</developerConnection>
+        <connection>scm:svn:file:///var/svn/repos/common/maven/lib-installer</connection>
+        <developerConnection>scm:svn:file:///var/svn/repos/common/maven/lib-installer</developerConnection>
         <tag>HEAD</tag>
     </scm>
 

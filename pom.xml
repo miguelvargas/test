@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mvwsolutions</groupId>
+    <artifactId>all</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>All projects</name>
+
+    <scm>
+        <connection>scm:svn:file:///var/svn/repos</connection>
+        <developerConnection>scm:svn:file:///var/svn/repos</developerConnection>
+        <tag>HEAD</tag>
+    </scm>    
+
+    <modules>
+        <module>common/maven/lib-installer</module>
+        
+        <module>common/maven/global-parent</module>
+        
+        <module>common/dao</module>
+        <module>common/daogen</module>
+
+    </modules>
+
+</project>
