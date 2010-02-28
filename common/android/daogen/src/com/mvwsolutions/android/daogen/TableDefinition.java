@@ -279,8 +279,8 @@ class TableDefinition {
 //		}
 		
 		id.nl();
-		id.iprintln("protected IConnectionBean createNewBean() {");
-		id.iprintln("return new "+interfaceName+"();");
+		id.iprintln("protected " + interfaceName + " createNewBean() {");
+		id.iprintln("return new "+ interfaceName +"();");
 		id.closeBrace();
 		
 		id.nl();

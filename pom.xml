@@ -22,8 +22,13 @@
         
         <module>common/maven/global-parent</module>
         
+        <module>common/java-utils</module>
+
         <module>common/android/dao</module>
         <module>common/android/daogen</module>
+        <module>common/android/daogen-maven-plugin</module>
+
+        <module>examples/MapsAndDb</module>
 
     </modules>
 

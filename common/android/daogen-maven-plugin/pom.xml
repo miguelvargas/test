@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mvwsolutions.common.android</groupId>
+    <artifactId>daogen-maven-plugin</artifactId>
+    <packaging>maven-plugin</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>Daogen maven plugin that generates DAO from annotated beans</name>
+
+    <scm>
+        <connection>scm:svn:file:///var/svn/repos/common/android/daogen-maven-plugin</connection>
+        <developerConnection>scm:svn:file:///var/svn/repos/common/android/daogen-maven-plugin</developerConnection>
+        <tag>HEAD</tag>
+    </scm>    
+
+    <build>
+        <directory>target</directory>
+        
+        <outputDirectory>target/classes</outputDirectory>
+        <finalName>${artifactId}-${version}</finalName>
+        <testOutputDirectory>target/test-classes</testOutputDirectory>
+        <sourceDirectory>src</sourceDirectory>
+        <scriptSourceDirectory>scripts</scriptSourceDirectory>
+        <testSourceDirectory>test</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>src-res</directory>
+                <excludes>
+                    <exclude>*app.properties</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src-res</directory>
+                <includes>
+                    <include>*app.properties</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>test-res</directory>
+                <excludes>
+                    <exclude>*app.properties</exclude>
+                </excludes>
+            </testResource>
+            <testResource>
+                <directory>test-res</directory>
+                <includes>
+                    <include>*app.properties</include>
+                </includes>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+    </build>    
+
+    <dependencies>
+        
+        <!-- projects -->
+
+        <dependency>
+	    <groupId>com.mvwsolutions.common</groupId>
+	    <artifactId>java-utils</artifactId>
+	    <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+	    <groupId>com.mvwsolutions.common.android</groupId>
+	    <artifactId>daogen</artifactId>
+	    <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        
+        <!-- third party libs -->
+
+ 	<dependency>
+      		<groupId>org.apache.maven</groupId>
+      		<artifactId>maven-plugin-api</artifactId>
+ 		<version>2.2.1</version>
+    	</dependency>
+
+ 	<dependency>
+      		<groupId>org.apache.maven</groupId>
+      		<artifactId>maven-project</artifactId>
+ 		<version>2.2.1</version>
+    	</dependency>
+
+        
+
+    </dependencies>
+    
+</project>
