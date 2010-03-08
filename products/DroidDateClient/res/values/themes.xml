@@ -1,0 +1,6 @@
+<resources>
+	<style name="droiddate" parent="@android:style/Theme" >
+		<item name="android:editTextStyle">@style/droiddate_edittext</item>
+		<item name="android:buttonStyle">@style/droiddate_btn</item>
+	</style>
+</resources>

@@ -41,8 +41,7 @@
 	    android:layout_height="wrap_content"
 	    android:singleLine="true"
 	    android:layout_width="fill_parent" 
-	    android:padding="5px"
-	    android:textColorHint="@drawable/edittextcolors"
+	    android:padding="10px"
 	    />
 	  
 	     </TableRow>        
@@ -64,9 +63,8 @@
 	     android:inputType="textPassword"
 	     android:layout_height="wrap_content"
 	     android:singleLine="true"
-	     android:padding="5px" 
+	     android:padding="10px" 
 	     android:layout_width="fill_parent"
-	     android:textColorHint="@drawable/edittextcolors"
 	     />
 	     </TableRow>
 	 </TableLayout>
