@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">DroidDate</string>
-    <string name="login_welcome">DroidDate Login</string>
-    <string name="username_label">Username:</string>
-    <string name="password_label">Password:</string>
-    <string name="login_btn_label">Login</string>
-</resources>
