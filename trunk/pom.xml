@@ -33,7 +33,9 @@
 
         <!-- module>examples/MapsAndDb</module -->
 
-        <module>products/DroidDateServer</module>
+
+        <module>products/in-house/DroidDateServerAPI</module>
+        <module>products/in-house/DroidDateServer</module>
 
     </modules>
 
