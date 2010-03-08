@@ -17,13 +17,13 @@ public abstract class IdBaseDao<T> extends BaseDao<T> {
 	public abstract void assignPk(T bean, long id);
 
 	/**
-	 * Return the same ContentValues object with _ID field removed
+	 * Return the same ContentValues object with PK field removed
 	 * 
 	 * @param cv
 	 * @return
 	 */
-	private static ContentValues removeId(ContentValues cv) {
-		cv.remove("_id");
+	private ContentValues removeId(ContentValues cv) {
+		cv.remove(getPkColumnName());
 		return cv;
 	}
 
@@ -68,7 +68,7 @@ public abstract class IdBaseDao<T> extends BaseDao<T> {
 	 * @param db
 	 * @return Number of rows updated
 	 */
-	public int Gen_update(T bean) {
+	public int update(T bean) {
 		return database.update(getTableName(),
 				removeId(createContentValues(bean)), getPkColumnName() + "="
 						+ extractPk(bean), null);

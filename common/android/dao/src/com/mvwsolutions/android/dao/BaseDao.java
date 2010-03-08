@@ -75,4 +75,14 @@ public abstract class BaseDao<T> {
 		}
 	}
 
+	public SQLiteDatabase getDatabase() {
+		return database;
+	}
+
+	public void setDatabase(SQLiteDatabase database) {
+		this.database = database;
+	}
+	
+	
+
 }
