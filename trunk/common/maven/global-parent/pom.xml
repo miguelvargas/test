@@ -243,26 +243,6 @@
                 </configuration>
             </plugin>
 
-	<plugin>
-        	<groupId>com.mvwsolutions.common.android</groupId>
-	        <artifactId>daogen-maven-plugin</artifactId>
-        	<version>1.0-SNAPSHOT</version>
-		<configuration>
-    			<genOutput>gen</genOutput>
-		</configuration>
-
-		<!-- executions>
-	          <execution>
-        	    <phase>generate-sources</phase>
-	            <goals>
-        	      <goal>run</goal>
-	            </goals>
-        	  </execution>
-	        </executions -->
-
-      	</plugin>
-
-            
         </plugins>
     </build>
     
