@@ -27,7 +27,7 @@ public abstract class CommandEvent {
 
 
 
-	enum SYNC_TYPE {
+	public enum SYNC_TYPE {
 		Async,
 		Sync
 	}

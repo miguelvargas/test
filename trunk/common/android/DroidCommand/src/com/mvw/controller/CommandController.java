@@ -9,6 +9,8 @@ import java.util.concurrent.Executors;
 
 
 import com.mvw.command.Command;
+import com.mvw.controller.CommandControllerTest.TestCommand;
+import com.mvw.controller.CommandControllerTest.TestEvent;
 import com.mvw.event.CommandEvent;
 
 public class CommandController {
@@ -58,12 +60,12 @@ public class CommandController {
 	/*
 	 * Clients will call this to launch an event, then we will call the correct command
 	 */
-	public void dispatchEvent(final CommandEvent event) throws CommandMappingException {
+	public void dispatchEvent(final CommandEvent event) {
 	//	Log.d(Tag,"dispatching event "+ event.getType());
 		List<Command> commands = commandMaps.get(event.getType());
 		if (commands == null) {
 	//		Log.e(Tag, "Skipping event, no command map found, maybe this should not happen");
-			throw new CommandMappingException("no list object for registered event type");
+			return;
 		}
 		if (commands.size() == 0) {
 	//		Log.d(Tag,"no commands registered, skip any action on event "+event.getType());
@@ -91,6 +93,15 @@ public class CommandController {
 	
 	private ExecutorService getExecutorService() {
 		return Executors.newCachedThreadPool();
+	}
+
+	public void addCommand(Command cmd, CommandEvent event) {
+		addCommand(cmd, event.getType());
+		
+	}
+
+	public void removeCommand(TestCommand cmd, CommandEvent event) {
+		removeCommand(cmd, event.getType());
 	}
 	
 }
