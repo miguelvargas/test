@@ -11,6 +11,9 @@ import com.mvw.command.Command;
 import com.mvw.event.CommandEvent;
 import com.mvw.event.EventListener;
 
+/*
+ * Controller for routing events to listeners and commands
+ */
 @SuppressWarnings("unchecked")
 public class CommandController {
 
