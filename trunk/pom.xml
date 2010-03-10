@@ -34,7 +34,7 @@
 
 	<module>common/maven/android-parent</module>
 
-        <!-- module>examples/MapsAndDb</module -->
+        <module>examples/MapsAndDb</module>
 
 
         <module>products/in-house/DroidDateServerAPI</module>
