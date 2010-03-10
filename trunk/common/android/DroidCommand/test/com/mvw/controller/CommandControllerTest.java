@@ -10,14 +10,18 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
 
-import com.mvw.command.Command;
+import com.mvw.command.TestCommand;
+import com.mvw.command.TestCommand2;
 import com.mvw.event.CommandEvent;
 
 
 public class CommandControllerTest {
 
-	public Object lock = new Object();
-	public AtomicInteger threadCount = new AtomicInteger();
+	public static boolean commandRan = false;
+	public static boolean commandRan2 = false;
+	
+	public static Object lock = new Object();
+	public static AtomicInteger threadCount = new AtomicInteger();
 	
 	@Test
 	public void testControllerSetup() {
@@ -34,13 +38,15 @@ public class CommandControllerTest {
 	}
 	@Test
 	public void testControllerAddCommand() {
+		commandRan = false;
+		commandRan2 = false;
+		
 		CommandController controller = new CommandController();
-		TestCommand cmd = new TestCommand();
 		TestEvent tEvent = new TestEvent();
-		controller.addCommand(cmd, tEvent);
+		controller.addCommand(TestCommand.class, tEvent);
 		
 		// check before command has run
-		assertFalse(cmd.commandRan);
+		assertFalse(commandRan);
 		try {
 			synchronized (lock) {
 				controller.dispatchEvent(tEvent);
@@ -49,24 +55,25 @@ public class CommandControllerTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		assertTrue(cmd.commandRan);
+		assertTrue(commandRan);
 		
 	}
 	
 	
 	@Test
 	public void testControllerAddTwoCommand() {
+		commandRan = false;
+		commandRan2 = false;
 		CommandController controller = new CommandController();
-		TestCommand cmd = new TestCommand();
-		TestEvent tEvent = new TestEvent();
-		controller.addCommand(cmd, tEvent);
 		
-		TestCommand cmd2 = new TestCommand();
-		controller.addCommand(cmd2, tEvent);
+		TestEvent tEvent = new TestEvent();
+		controller.addCommand(TestCommand.class, tEvent);
+		
+		controller.addCommand(TestCommand2.class, tEvent);
 		
 		// check before command has run
-		assertFalse(cmd.commandRan);
-		assertFalse(cmd2.commandRan);
+		assertFalse(commandRan);
+		assertFalse(commandRan2);
 		threadCount.set(2);
 		controller.dispatchEvent(tEvent);
 		int i = 0;
@@ -88,23 +95,24 @@ public class CommandControllerTest {
 			i++;
 		}
 		
-		assertTrue(cmd.commandRan);
-		assertTrue(cmd2.commandRan);
+		assertTrue(commandRan);
+		assertTrue(commandRan2);
 	}
 	
 	@Test
 	public void testControllerRemoveCommand() {
+		commandRan = false;
+		commandRan2 = false;
 		CommandController controller = new CommandController();
-		TestCommand cmd = new TestCommand();
 		TestEvent tEvent = new TestEvent();
-		controller.addCommand(cmd, tEvent);
+		controller.addCommand(TestCommand.class, tEvent);
 		
-		TestCommand cmd2 = new TestCommand();
-		controller.addCommand(cmd2, tEvent);
+		
+		controller.addCommand(TestCommand2.class, tEvent);
 		
 		// check before command has run
-		assertFalse(cmd.commandRan);
-		assertFalse(cmd2.commandRan);
+		assertFalse(commandRan);
+		assertFalse(commandRan2);
 		threadCount.set(2);
 		controller.dispatchEvent(tEvent);
 		int i = 0;
@@ -125,13 +133,13 @@ public class CommandControllerTest {
 			}
 			i++;
 		}
-		assertTrue(cmd.commandRan);
-		assertTrue(cmd2.commandRan);
+		assertTrue(commandRan);
+		assertTrue(commandRan2);
 		
-		controller.removeCommand(cmd, tEvent);
+		controller.removeCommand(TestCommand.class, tEvent);
 		// now only cmd2 should run, as we have removed cmd
-		cmd.commandRan = false;
-		cmd2.commandRan = false;
+		commandRan = false;
+		commandRan2 = false;
 		threadCount.set(1);
 		controller.dispatchEvent(tEvent);
 		try {
@@ -141,13 +149,13 @@ public class CommandControllerTest {
 			e.printStackTrace();
 		} 
 		
-		assertFalse("command ran, but was removed, bug",cmd.commandRan);
-		assertTrue(cmd2.commandRan);
+		assertFalse("command ran, but was removed, bug",commandRan);
+		assertTrue(commandRan2);
 		
-		controller.removeCommand(cmd2, tEvent);
+		controller.removeCommand(TestCommand2.class, tEvent);
 		// remove the final command
-		cmd.commandRan = false;
-		cmd2.commandRan = false;
+		commandRan = false;
+		commandRan2 = false;
 		
 		controller.dispatchEvent(tEvent);
 		try {
@@ -155,47 +163,24 @@ public class CommandControllerTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		assertFalse(cmd.commandRan);
-		assertFalse(cmd.commandRan);
+		assertFalse(commandRan);
+		assertFalse(commandRan2);
 		
 	}
 	
 	@Test
 	public void TestSyncEvent() {
+		commandRan = false;
+		commandRan2 = false;
 		CommandController controller = new CommandController();
-		TestCommand cmd = new TestCommand();
 		TestSyncEvent tEvent = new TestSyncEvent();
-		controller.addCommand(cmd, tEvent);
+		controller.addCommand(TestCommand.class, tEvent);
 		
 		controller.dispatchEvent(tEvent);
-		assertTrue(cmd.commandRan); // should be true if sync
+		assertTrue(commandRan); // should be true if sync
 		
 	}
 	
-	
-	
-	
-	public class TestCommand implements Command {
-
-		public boolean commandRan = false;
-		
-		@Override
-		public Object execute(CommandEvent event) {
-			synchronized (lock) {
-					
-				commandRan = true;
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				threadCount.decrementAndGet();
-				lock.notify();
-			}
-			return null;
-		}
-	
-	}
 	
 	public class TestEvent extends CommandEvent {
 

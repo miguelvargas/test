@@ -8,15 +8,16 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import com.mvw.command.Command;
-import com.mvw.controller.CommandControllerTest.TestCommand;
 import com.mvw.event.CommandEvent;
 
+@SuppressWarnings("unchecked")
 public class CommandController {
 
 	String Tag = CommandController.class.getSimpleName();
 	
 	ExecutorService threadPool;
-	private Map<String, List<Command>> commandMaps = new HashMap<String , List<Command>>();
+	
+	private Map<String, List<Class>> commandMaps = new HashMap<String , List<Class>>();
 	
 	public CommandController() {
 		threadPool = getExecutorService();
@@ -34,20 +35,20 @@ public class CommandController {
 	/*
 	 * Adds the command to the controller
 	 */
-	public void addCommand(Command cmd, String eventType) {
-		List<Command> commands = commandMaps.get(eventType);
+	public void addCommand(Class cmd, String eventType) {
+		List<Class> commands = commandMaps.get(eventType);
 		if (commands == null) {
-			commands = new ArrayList<Command>();
+			commands = new ArrayList<Class>();
 			commandMaps.put(eventType, commands);			
 		}
 		commands.add(cmd); //add to the map
 	}
 	
-	public boolean removeCommand(Command cmd, String eventType) {
+	public boolean removeCommand(Class cmd, String eventType) {
 		if (!commandMaps.containsKey(eventType)) {
 			return false;
 		}
-		List<Command> cmdlist = commandMaps.get(eventType); 
+		List<Class> cmdlist = commandMaps.get(eventType); 
 		if (cmdlist == null) {
 			return false;
 		}
@@ -60,7 +61,7 @@ public class CommandController {
 	 */
 	public void dispatchEvent(final CommandEvent event) {
 	//	Log.d(Tag,"dispatching event "+ event.getType());
-		List<Command> commands = commandMaps.get(event.getType());
+		List<Class> commands = commandMaps.get(event.getType());
 		if (commands == null) {
 	//		Log.e(Tag, "Skipping event, no command map found, maybe this should not happen");
 			return;
@@ -70,17 +71,33 @@ public class CommandController {
 			return;
 		}
 		// run each commmand defined for this type of event
-		for (final Command cmd : commands) {
+		for (final Class cmd : commands) {
 			if (event.isAsync()) {
 				threadPool.execute(new Runnable(){
 					@Override
 					public void run() {
-						cmd.execute(event);
+						Command command;
+						try {
+							command = (Command) cmd.newInstance();
+							command.execute(event);
+						} catch (InstantiationException e) {
+							e.printStackTrace();
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
+						}
 					}
 				});
 			} 
 			else {
-				cmd.execute(event);
+				Command command;
+				try {
+					command = (Command) cmd.newInstance();
+					command.execute(event);
+				} catch (InstantiationException e) {
+					// TODO Auto-generated catch block
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -93,13 +110,14 @@ public class CommandController {
 		return Executors.newCachedThreadPool();
 	}
 
-	public void addCommand(Command cmd, CommandEvent event) {
+	public void addCommand(Class cmd, CommandEvent event) {
 		addCommand(cmd, event.getType());
 		
 	}
 
-	public void removeCommand(TestCommand cmd, CommandEvent event) {
+	public void removeCommand(Class cmd, CommandEvent event) {
 		removeCommand(cmd, event.getType());
 	}
+
 	
 }
