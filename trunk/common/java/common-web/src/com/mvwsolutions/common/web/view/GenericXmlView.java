@@ -1,13 +1,13 @@
 package com.mvwsolutions.common.web.view;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.oxm.Marshaller;
+import org.simpleframework.xml.Serializer;
 import org.springframework.web.servlet.View;
-import org.springframework.xml.transform.StringResult;
 
 import com.mvwsolutions.common.web.xml.Response;
 
@@ -24,17 +24,17 @@ public class GenericXmlView implements View {
 
     public static final String AUTHENTICATION_FAILED_MODEL = "AUTHENTICATION_FAILED_MODEL";
 
-    private Marshaller marshaller;
+    private Serializer serializer;
 
-    public Marshaller getMarshaller() {
-        return marshaller;
-    }
+    public Serializer getSerializer() {
+		return serializer;
+	}
 
-    public void setMarshaller(Marshaller marshaller) {
-        this.marshaller = marshaller;
-    }
+	public void setSerializer(Serializer serializer) {
+		this.serializer = serializer;
+	}
 
-    public String getContentType() {
+	public String getContentType() {
         return ("text/xml; charset=UTF-8");
     }
 
@@ -72,9 +72,9 @@ public class GenericXmlView implements View {
         if (authenticationFailed != null) {
             response.setAuthenticationFailed(authenticationFailed);
         }
-        StringResult sr = new StringResult();
-        marshaller.marshal(response, sr);
-        httpResponse.getWriter().write(sr.toString());
+        ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+        serializer.write(response, byteOut);
+        httpResponse.getOutputStream().write(byteOut.toByteArray());
     }
 
 }
