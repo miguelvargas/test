@@ -7,10 +7,8 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
 import com.mvw.command.Command;
 import com.mvw.controller.CommandControllerTest.TestCommand;
-import com.mvw.controller.CommandControllerTest.TestEvent;
 import com.mvw.event.CommandEvent;
 
 public class CommandController {
