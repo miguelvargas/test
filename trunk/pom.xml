@@ -30,6 +30,7 @@
         <module>common/android/dao</module>
         <module>common/android/daogen</module>
         <module>common/android/daogen-maven-plugin</module>
+        <module>common/android/DroidCommand</module>
 
 	<module>common/maven/android-parent</module>
 
