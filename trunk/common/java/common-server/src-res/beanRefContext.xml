@@ -12,6 +12,9 @@
             <list>
                 <value>classpath:/app.xml</value>
                 <value>classpath*:/component.xml</value>
+                <value>classpath*:/dao.xml</value>
+                <value>classpath*:/service.xml</value>
+                <value>classpath*:/view.xml</value>
             </list>
         </constructor-arg>
     </bean>
