@@ -7,7 +7,7 @@ public class TestCommand2 implements Command {
 
 	
 	@Override
-	public Object execute(CommandEvent event) {
+	public void execute(CommandEvent event) {
 		synchronized (CommandControllerTest.lock) {
 				
 			CommandControllerTest.commandRan2 = true;
@@ -19,7 +19,7 @@ public class TestCommand2 implements Command {
 			CommandControllerTest.threadCount.decrementAndGet();
 			CommandControllerTest.lock.notify();
 		}
-		return null;
+		return;
 	}
 
 }
