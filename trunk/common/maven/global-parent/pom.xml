@@ -132,32 +132,32 @@
         <resources>
             <resource>
                 <directory>src-res</directory>
-                <excludes>
+                <!-- excludes>
                     <exclude>*app.properties</exclude>
-                </excludes>
+                </excludes -->
             </resource>
-            <resource>
-                <directory>src-res-f</directory>
+            <!-- resource>
+                <directory>src-res</directory>
                 <includes>
                     <include>*app.properties</include>
                 </includes>
                 <filtering>true</filtering>
-            </resource>
+            </resource -->
         </resources>
         <testResources>
             <testResource>
                 <directory>test-res</directory>
-                <excludes>
+                <!-- excludes>
                     <exclude>*app.properties</exclude>
-                </excludes>
+                </excludes -->
             </testResource>
-            <testResource>
+            <!-- testResource>
                 <directory>test-res-f</directory>
                 <includes>
                     <include>*app.properties</include>
                 </includes>
                 <filtering>true</filtering>
-            </testResource>
+            </testResource -->
         </testResources>
         
         <plugins>
@@ -184,7 +184,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>buildnumber-maven-plugin</artifactId>
-                <version>1.0-beta-1-SNAPSHOT</version>
+                <version>1.0-beta-4</version>
                 <executions>
                     <execution>
                         <phase>validate</phase>
@@ -640,22 +640,29 @@
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>jstl</artifactId>
-                <scope>runtime</scope>
+                <scope>provided</scope>
                 <version>1.1.2</version>
             </dependency>
 
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>jsp-api</artifactId>
+                <scope>provided</scope>
 	        <version>2.0</version>
             </dependency>
         
             <dependency>
                 <groupId>taglibs</groupId>
                 <artifactId>standard</artifactId>
-                <scope>runtime</scope>
+                <scope>provided</scope>
                 <version>1.1.2</version>
             </dependency>            
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.12</version>
+            </dependency>
 
         </dependencies>
         
