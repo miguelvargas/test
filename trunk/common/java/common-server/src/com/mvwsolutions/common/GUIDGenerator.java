@@ -14,6 +14,10 @@ public class GUIDGenerator {
         return UUID.randomUUID().toString();
     }
 
+    public static BigInteger generateBigIntGUID() {
+    	return new BigInteger(generateNumericGUID());
+    }
+    
     public static String generateNumericGUID() {
         UUID uuid = UUID.randomUUID();
         String lsb = longToUnsignedString(uuid.getLeastSignificantBits());

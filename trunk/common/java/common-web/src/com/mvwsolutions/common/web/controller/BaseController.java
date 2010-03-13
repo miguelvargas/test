@@ -1,5 +1,6 @@
 package com.mvwsolutions.common.web.controller;
 
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Map;
 
@@ -10,17 +11,14 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractCommandController;
 
-
 import com.mvwsolutions.common.exceptions.AuthorizationException;
 import com.mvwsolutions.common.service.CurrentUserService;
-import com.mvwsolutions.common.web.util.WebConstants;
 import com.mvwsolutions.common.web.util.WebUtils;
 import com.mvwsolutions.common.web.view.GenericXmlView;
 
 public abstract class BaseController<C> extends AbstractCommandController {
 
-    public static final String SESSID_COOKIE_NAME = WebConstants.SESSID_COOKIE_NAME;
-    public static final String SSUSER_COOKIE_NAME = WebConstants.SSUSER_COOKIE_NAME;
+    public static final String SESSID_COOKIE_NAME = "MVW_DROIDADTE_SESSION_ID";
 
     public static final String SESSID_QUERY_NAME = SESSID_COOKIE_NAME;
 
@@ -76,8 +74,6 @@ public abstract class BaseController<C> extends AbstractCommandController {
 
         final long startTime = System.currentTimeMillis();
 
-        String partnerCode = httpRequest.getParameter(WebConstants.PARTNER_CODE);
-        
         preventCaching(httpResponse);
         if (extraSecurityEnforcers != null) {
             for (ExtraSecurityEnforcer extraSecurityEnforcer : extraSecurityEnforcers) {
@@ -111,16 +107,11 @@ public abstract class BaseController<C> extends AbstractCommandController {
             res = handleNotAuthenticatedRequest(httpRequest, httpResponse, cmd,
                     errors);
         } else {
-            // attempt to get from cookie
-            String sessionId = WebUtils.getCookieValue(httpRequest, SESSID_COOKIE_NAME);
-            // if, null check query string as a last resort
-            if (sessionId == null && allowQuerySession) {
-                sessionId = httpRequest.getParameter(SESSID_QUERY_NAME);
-            }
+            String sessionId = extractSessionId(httpRequest);
 
-            String userId = null;
+            Long userId = null;
             if( sessionId != null && !sessionId.equals("") )
-                userId = currentUserService.setCurrentSsoSession(sessionId);
+                userId = currentUserService.setCurrentSsoSession(new BigInteger(sessionId));
 
             if (userId == null) {
                 requestAuthenticated = false;
@@ -142,15 +133,18 @@ public abstract class BaseController<C> extends AbstractCommandController {
         model.put(GenericXmlView.AUTHENTICATION_FAILED_MODEL,
                 authenticationFailed);
         
-        if (partnerCode != null && partnerCode.length() > 0)
-        {
-        	model.put(WebConstants.PARTNER_CODE,
-                partnerCode);
-        	
-        }
-
         return res;
     }
+
+	protected String extractSessionId(HttpServletRequest httpRequest) {
+		// attempt to get from cookie
+		String sessionId = WebUtils.getCookieValue(httpRequest, SESSID_COOKIE_NAME);
+		// if, null check query string as a last resort
+		if (sessionId == null && allowQuerySession) {
+		    sessionId = httpRequest.getParameter(SESSID_QUERY_NAME);
+		}
+		return sessionId;
+	}
 
     @Override
     protected C getCommand(HttpServletRequest request) throws Exception {

@@ -2,6 +2,8 @@ package com.mvwsolutions.common.web.xml;
 
 import java.io.Serializable;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 /**
@@ -13,18 +15,25 @@ import org.simpleframework.xml.Root;
 public class Response implements Serializable {
     private static final long serialVersionUID = -56270744398174964L;
 
+    @Attribute
     private boolean success = true;
 
+    @Attribute (required=false)
     private String errorCode;
     
+    @Element (required=false)
 	private String error;
 
+    @Element (required=false)
 	private Object resultObject;
 
+    @Attribute
 	private boolean authenticationFailed = false;
 	
+    @Attribute
 	private boolean requestAuthenticated = false;
 	
+    @Attribute (required=false)
 	private long requestDuration;
 	
 	

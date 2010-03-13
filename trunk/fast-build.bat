@@ -1,0 +1,1 @@
+mvn -Dfast clean install 

@@ -1,5 +1,7 @@
 package com.mvwsolutions.common.service;
 
+import java.math.BigInteger;
+
 /**
  * 
  * @author smineyev
@@ -12,10 +14,10 @@ public interface CurrentUserService {
      * @param sessionId sso session id
      * @return userId
      */
-    public String setCurrentSsoSession(String sessionId);
+    public Long setCurrentSsoSession(BigInteger sessionId);
     
-    public void setCurrentUserIdNoSsoCheck(String userId);
+    public void setCurrentUserIdNoSsoCheck(Long userId);
     
-    public String getCurrentUserId();
+    public Long getCurrentUserId();
     
 }
