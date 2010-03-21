@@ -73,34 +73,30 @@ public class CommandController {
 
 		// now process all commands
 		// Log.d(Tag,"dispatching event "+ event.getType());
-		List<Class> commands = commandMaps.get(event.getType());
-		if (commands == null || commands.size() == 0) {
+		List<Class> commandClasses = commandMaps.get(event.getType());
+		if (commandClasses == null || commandClasses.size() == 0) {
 			// Log.d(Tag,"no commands registered, skip any action on event "+event.getType());
 			return;
 		}
 		// run each commmand defined for this type of event
-		for (final Class cmd : commands) {
-			if (event.isAsync()) {
-				threadPool.execute(new Runnable() {
-					@Override
-					public void run() {
-						Command command;
-						try {
-							command = (Command) cmd.newInstance();
-						} catch (Exception e) {
-							throw new RuntimeException(e);
+		for (final Class cmdClass : commandClasses) {
+			try {
+				final Command command = (Command) cmdClass.newInstance();
+				command.setController(this);
+				if (event.isAsync()) {
+					threadPool.execute(new Runnable() {
+						@Override
+						public void run() {
+							command.execute(event);
 						}
-						command.execute(event);
-					}
-				});
-			} else {
-				Command command;
-				try {
-					command = (Command) cmd.newInstance();
-				} catch (Exception e) {
-					throw new RuntimeException(e);
+					});
+				} else {
+					command.execute(event);
 				}
-				command.execute(event);
+			} catch (InstantiationException e) {
+				throw new RuntimeException(e);
+			} catch (IllegalAccessException e) {
+				throw new RuntimeException(e);
 			}
 		}
 	}

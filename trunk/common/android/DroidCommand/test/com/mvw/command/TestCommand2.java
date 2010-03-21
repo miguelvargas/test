@@ -3,7 +3,7 @@ package com.mvw.command;
 import com.mvw.controller.CommandControllerTest;
 import com.mvw.event.CommandEvent;
 
-public class TestCommand2 implements Command {
+public class TestCommand2 extends Command {
 
 	
 	@Override
