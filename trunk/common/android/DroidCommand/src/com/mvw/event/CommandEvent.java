@@ -5,31 +5,25 @@ public abstract class CommandEvent {
 
 	// default to async
 	private SYNC_TYPE syncType = SYNC_TYPE.Async;
-	
+
 	public boolean isAsync() {
-		if (syncType.equals(SYNC_TYPE.Async)) {
+		if (syncType == SYNC_TYPE.Async) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
-	
-	
+
 	public CommandEvent() {
 	}
-	
+
 	public CommandEvent(SYNC_TYPE syncType) {
 		super();
 		this.syncType = syncType;
 	}
 
-
-
-
 	public enum SYNC_TYPE {
-		Async,
-		Sync
+		Async, Sync
 	}
-	
+
 }
