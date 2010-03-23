@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.simpleframework.xml.Serializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.ErrorCoded;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.servlet.View;
@@ -70,7 +69,7 @@ public class BaseExceptionXmlView implements View {
 		boolean debugLog = false;
 		if (e instanceof ErrorCodedException) {
 			res.setErrorCode(((ErrorCodedException) e).getErrorCode());
-			message = ((ErrorCoded) e).getErrorCode();
+			message = ((ErrorCodedException) e).getMessage(); 
 			debugLog = true;
 		} else if (e instanceof BindException) {
 			BindException be = (BindException) e;

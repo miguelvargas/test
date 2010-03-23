@@ -124,14 +124,16 @@ public abstract class BaseController<C> extends AbstractCommandController {
             }
         }
 
-        final Map model = res.getModel();
-
-        model.put(GenericXmlView.REQUEST_DURATION_MODEL,
-                new Long(System.currentTimeMillis() - startTime));
-        model.put(GenericXmlView.REQUEST_AUTHENTICATED_MODEL,
-                requestAuthenticated);
-        model.put(GenericXmlView.AUTHENTICATION_FAILED_MODEL,
-                authenticationFailed);
+        if (res != null) {
+	        final Map model = res.getModel();
+	
+	        model.put(GenericXmlView.REQUEST_DURATION_MODEL,
+	                new Long(System.currentTimeMillis() - startTime));
+	        model.put(GenericXmlView.REQUEST_AUTHENTICATED_MODEL,
+	                requestAuthenticated);
+	        model.put(GenericXmlView.AUTHENTICATION_FAILED_MODEL,
+	                authenticationFailed);
+        }
         
         return res;
     }
