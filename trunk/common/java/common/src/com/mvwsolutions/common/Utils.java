@@ -18,12 +18,6 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import org.w3c.dom.Document;
-
-import com.sun.org.apache.xerces.internal.util.XMLChar;
-import com.sun.org.apache.xml.internal.serialize.OutputFormat;
-import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
-
 /**
  * 
  * @author smineyev
@@ -123,37 +117,6 @@ public class Utils {
 		return sb.toString();
 	}
 
-	public static String xmlFilter(String content) {
-		if (content == null) {
-			return null;
-		}
-
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < content.length(); i++) {
-			char c = content.charAt(i);
-
-			if (XMLChar.isValid(c)) {
-				sb.append(c);
-			}
-
-		}
-		return sb.toString();
-	}
-
-	public static void xmlSerialize(Document doc, OutputStream out)
-			throws IOException {
-		OutputFormat format = new OutputFormat(doc);
-		format.setLineWidth(65);
-		format.setIndenting(true);
-		format.setIndent(2);
-		format.setEncoding("UTF-8");
-		XMLSerializer serializer = new XMLSerializer(out, format); // FIXME
-		// PROPRIETARY
-		// INTERNAL
-		// CLASS !
-		serializer.serialize(doc);
-		// out.write(doc.toString().getBytes("UTF-8"));
-	}
 
 	public static ArrayList<String> tokenize(String srcStr, String delim) {
 		ArrayList<String> res = new ArrayList<String>();
