@@ -17,6 +17,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.StringTokenizer;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 
@@ -28,6 +29,12 @@ public class Utils {
 	private Utils() {
 		// instance creation prohibited
 	}
+	
+    private static AtomicInteger baseCounter = new AtomicInteger((int) System.currentTimeMillis());
+    
+    public static int getUniqueInt() {
+        return baseCounter.getAndIncrement();
+    }
 
 	public static String errorToString(Throwable e) {
         if (e == null) {
