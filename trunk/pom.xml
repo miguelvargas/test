@@ -30,7 +30,7 @@
         <module>common/android/dao</module>
         <module>common/android/daogen</module>
         <module>common/android/daogen-maven-plugin</module>
-        <!-- module>common/android/DroidCommand</module -->
+        <module>common/android/DroidCommand</module>
 
 	<module>common/maven/android-parent</module>
 
@@ -39,6 +39,7 @@
 
         <module>products/in-house/DroidDateServerAPI</module>
         <module>products/in-house/DroidDateServer</module>
+	<module>products/in-house/DroidDateClient</module>
 
     </modules>
 

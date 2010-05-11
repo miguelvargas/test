@@ -174,7 +174,7 @@
 		            </goals>
 		            <configuration>
 		              	<sources>
-                			<source>gen</source>
+                			<source>gen2</source> <!-- can not use 'gen' as it's conflicting with eclipse -->
               			</sources>
             		    </configuration>
 		          </execution>

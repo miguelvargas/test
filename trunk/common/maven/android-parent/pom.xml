@@ -26,7 +26,7 @@
                 <version>2.3.0</version>
                 <configuration>
                     <sdk>
-                        <platform>2.1</platform>
+                        <platform>${android-sdk-version}</platform>
                     </sdk>
                     <deleteConflictingFiles>true</deleteConflictingFiles>
                 </configuration>
@@ -39,7 +39,7 @@
 	        <artifactId>daogen-maven-plugin</artifactId>
         	<version>1.0-SNAPSHOT</version>
 		<configuration>
-    			<genOutput>gen</genOutput>
+    			<genOutput>gen2</genOutput> <!-- cannot use 'gen' as it's conflicting with Eclipse -->
 		</configuration>
 
 		<!-- executions>
