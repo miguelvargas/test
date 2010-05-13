@@ -1,9 +1,5 @@
 package com.mvwsolutions.common.test.web;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -125,11 +121,11 @@ public class SpringServletTestCase {
 
     protected final <T> T getResponse(Class<T> expectedResponseClass,
             Class... classesToBeBound) {
-        assertEquals("Bad HTTP response code: " + this.httpResponse.getStatus()
+    	Assert.assertEquals("Bad HTTP response code: " + this.httpResponse.getStatus()
                 + ", content: " + this.httpResponse.getReason(), 200,
                 this.httpResponse.getStatus());
 
-        assertNotNull("Response is empty: " + this.httpResponse.getStatus()
+    	Assert.assertNotNull("Response is empty: " + this.httpResponse.getStatus()
                 + " " + this.httpResponse.getReason(), this.httpResponse
                 .getContent());
 
@@ -167,11 +163,11 @@ public class SpringServletTestCase {
 
         // to move on and extract result object we need to make sure that
         // request is successful
-        assertNotNull("Result object is null", response);
-        assertTrue("HTTP request failed, the cause: " + response.getError(),
+        Assert.assertNotNull("Result object is null", response);
+        Assert.assertTrue("HTTP request failed, the cause: " + response.getError(),
                 response.isSuccess());
 
-        assertTrue("Response is " + response.getResultObject() + ", but "
+        Assert.assertTrue("Response is " + response.getResultObject() + ", but "
                 + expectedResponseClass.getName() + " expected",
                 expectedResponseClass.isInstance(response.getResultObject()));
 
