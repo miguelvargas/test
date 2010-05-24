@@ -9,19 +9,17 @@ import java.util.concurrent.Executors;
 
 import com.mvw.command.Command;
 import com.mvw.event.CommandEvent;
-import com.mvw.event.EventListener;
+import com.mvw.event.EventDispatcher;
 
 /*
  * Controller for routing events to listeners and commands
  */
 @SuppressWarnings("unchecked")
-public class CommandController {
+public class CommandController extends EventDispatcher {
 
-	private ExecutorService threadPool;
+	ExecutorService threadPool;
 
-	private Map<String, List<Class>> commandMaps = new HashMap<String, List<Class>>();
-	private Map<String, List<EventListener>> listeners = new HashMap<String, List<EventListener>>();
-
+	Map<String, List<Class>> commandMaps = new HashMap<String, List<Class>>();
 	public CommandController() {
 		threadPool = getExecutorService();
 	}
@@ -56,21 +54,10 @@ public class CommandController {
 		return cmdlist.remove(cmd);
 
 	}
-
-	/*
-	 * Clients will call this to launch an event, then we will call the correct
-	 * command
-	 */
+	
 	public void dispatchEvent(final CommandEvent event) {
-
-		// first call all listeners
-		List<EventListener> elist = listeners.get(event.getType());
-		if (elist != null && elist.size() > 0) {
-			for (EventListener listener : elist) {
-				listener.onEvent(event);
-			}
-		}
-
+		super.dispatchEvent(event);
+		
 		// now process all commands
 		// Log.d(Tag,"dispatching event "+ event.getType());
 		List<Class> commandClasses = commandMaps.get(event.getType());
@@ -101,10 +88,6 @@ public class CommandController {
 		}
 	}
 
-	/*
-	 * Threadpool stategy, simple to start with
-	 */
-
 	private ExecutorService getExecutorService() {
 		return Executors.newCachedThreadPool();
 	}
@@ -116,37 +99,6 @@ public class CommandController {
 
 	public void removeCommand(Class cmd, CommandEvent event) {
 		removeCommand(cmd, event.getType());
-	}
-
-	/*
-	 * add a listener for an event type
-	 */
-	public void addEventListener(EventListener listner, String type) {
-
-		synchronized (listeners) {
-			List<EventListener> list = listeners.get(type);
-			if (list == null) {
-				list = new ArrayList<EventListener>();
-				listeners.put(type, list);
-			}
-			list.add(listner);
-		}
-	}
-
-	/*
-	 * Remove a listener for an eventtype Note: Removes only one, call for each
-	 * one that was added
-	 * 
-	 * Returns: true/false - if the listener was removed
-	 */
-	public boolean removeEventListener(EventListener listener, String type) {
-		synchronized (listeners) {
-			if (!listeners.containsKey(type)) {
-				return false;
-			}
-			List<EventListener> list = listeners.get(type);
-			return list.remove(listener);
-		}
 	}
 
 }
