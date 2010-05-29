@@ -1,5 +1,6 @@
 package com.mvw.event;
 
+
 public abstract class CommandEvent {
 	public abstract String getType();
 
