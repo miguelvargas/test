@@ -55,7 +55,7 @@ public class SpringServletTestCase {
         this.httpRequest.setMethod(post ? "POST" : "GET");
         this.httpRequest.setURI(uri);
         this.httpRequest.setVersion("HTTP/1.1");
-        this.httpRequest.setHeader("Host", "tester");
+        this.httpRequest.addHeader("Host", "tester");
         if (post) {
             this.httpRequest.setHeader("Content-Type",
                     "application/x-www-form-urlencoded;charset=UTF-8");
