@@ -5,10 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.mvw.command.Command;
-import com.mvw.event.CommandEvent;
-import com.mvw.event.EventListener;
-
 public class EventDispatcher {
 
 	private Map<String, List<EventListener>> listeners = new HashMap<String, List<EventListener>>();
