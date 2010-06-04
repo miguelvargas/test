@@ -14,16 +14,15 @@ public class EventDispatcher {
 	}
 
 	public void dispatchEvent(final CommandEvent event) {
-	
-		// first call all listeners
-		List<EventListener> elist = listeners.get(event.getType());
-		if (elist != null && elist.size() > 0) {
-			for (EventListener listener : elist) {
-				listener.onEvent(event);
+		synchronized (listeners) {
+			// first call all listeners
+			List<EventListener> elist = listeners.get(event.getType());
+			if (elist != null && elist.size() > 0) {
+				for (EventListener listener : elist) {
+					listener.onEvent(event);
+				}
 			}
 		}
-	
-		
 	}
 
 	public void addEventListener(EventListener listner, String type) {
