@@ -62,61 +62,61 @@
     
     <profiles>
       <profile>
-	<id>dev-test-profile</id>
-	<activation>
-	  <activeByDefault>true</activeByDefault>
-	</activation>
-	<build>
-	  <plugins>
-	    <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <failIfNoTests>false</failIfNoTests>
-                    
-                    <forkMode>once</forkMode>
-                    
-                    <!--  -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y -->
-                    <argLine>-Xmx512M -server -da</argLine>
-                    <disableXmlReport>true</disableXmlReport>
-		    <excludes>
-		      <exclude>**/*ExtendedTest.java</exclude>
-		    </excludes>
-		    <includes>
-		      <include>**/*Test.java</include>
-		    </includes>
-                </configuration>
-	    </plugin>
-	  </plugins>
-	</build>
+		<id>dev-test-profile</id>
+		<activation>
+		  <activeByDefault>true</activeByDefault>
+		</activation>
+		<build>
+		  <plugins>
+		    <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-surefire-plugin</artifactId>
+	                <configuration>
+	                    <failIfNoTests>false</failIfNoTests>
+	                    
+	                    <forkMode>once</forkMode>
+	                    
+	                    <!--  -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y -->
+	                    <argLine>-Xmx512M -server -da</argLine>
+	                    <disableXmlReport>false</disableXmlReport>
+					    <excludes>
+					      <exclude>**/*ExtendedTest.java</exclude>
+					    </excludes>
+					    <includes>
+					      <include>**/*Test.java</include>
+					    </includes>
+	                </configuration>
+		    </plugin>
+		  </plugins>
+		</build>
       </profile>
       <profile>
 	<id>extended-test-profile</id>
-	<activation>
-	  <property>
-	    <name>extendedTest</name>
-	  </property>
-	</activation>
-	<build>
-	  <plugins>
-	    <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <failIfNoTests>false</failIfNoTests>
-                    
-                    <forkMode>once</forkMode>
-                    
-                    <!--  -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y -->
-                    <argLine>-DextendedTest -Xmx512M -server -da</argLine>
-                    <disableXmlReport>true</disableXmlReport>
-		    <includes>
-		      <include>**/*Test.java</include>
-		    </includes>
-                </configuration>
-	    </plugin>
-	  </plugins>
-	</build>
+		<activation>
+		  <property>
+		    <name>extendedTest</name>
+		  </property>
+		</activation>
+		<build>
+		  <plugins>
+		    <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-surefire-plugin</artifactId>
+	                <configuration>
+	                    <failIfNoTests>false</failIfNoTests>
+	                    
+	                    <forkMode>once</forkMode>
+	                    
+	                    <!--  -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y -->
+	                    <argLine>-DextendedTest -Xmx512M -server -da</argLine>
+	                    <disableXmlReport>true</disableXmlReport>
+			    <includes>
+			      <include>**/*Test.java</include>
+			    </includes>
+	                </configuration>
+		    </plugin>
+		  </plugins>
+		</build>
       </profile>
     </profiles>
 
