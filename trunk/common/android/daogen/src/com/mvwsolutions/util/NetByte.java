@@ -10,15 +10,6 @@ package com.mvwsolutions.util;
 
 public final class NetByte {
 
-	// -------------------------------------------------------------------
-	// attributes
-	// -------------------------------------------------------------------
-	public static final String _ID_ = "$Id: NetByte.java,v 1.3 2005/05/31 18:09:07 mike Exp $";
-
-	// -------------------------------------------------------------------
-	// public interface
-	// -------------------------------------------------------------------
-
 	/**
 	 * Makes an unsigned int value out of a byte
 	 * 
