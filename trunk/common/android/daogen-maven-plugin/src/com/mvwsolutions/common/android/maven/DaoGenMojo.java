@@ -26,8 +26,8 @@ public class DaoGenMojo extends AbstractMojo {
 	/** @parameter default-value="${project}" */
 	private MavenProject mavenProject;
 
-	/** @parameter default-value="gen" */
-	private String genOutput;
+//	/** @parameter default-value="gen" */
+//	private String genOutput;
 
 	public void execute() throws MojoExecutionException {
 
@@ -35,7 +35,7 @@ public class DaoGenMojo extends AbstractMojo {
 				"Project output: "
 						+ mavenProject.getBuild().getOutputDirectory());
 		
-		final File genOutputDir = new File(genOutput);
+		final File genOutputDir = new File(mavenProject.getBuild().getSourceDirectory());
 		
 		getLog().info("Generated files will be placed into: " + genOutputDir.getAbsolutePath());
 

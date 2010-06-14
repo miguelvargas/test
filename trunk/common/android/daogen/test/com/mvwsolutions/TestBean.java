@@ -9,7 +9,7 @@ import com.mvwsolutions.android.dao.meta.TableInterface;
  * @author smineyev
  *
  */
-@TableInterface
+//@TableInterface
 public class TestBean {
 
 	private long id;

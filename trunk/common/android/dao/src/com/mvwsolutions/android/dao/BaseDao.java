@@ -1,6 +1,8 @@
 package com.mvwsolutions.android.dao;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -65,16 +67,30 @@ public abstract class BaseDao<T> {
 		}
 	}
 
-	public void findAll(Collection<T> collection) {
+	public Collection<T> findAll() {
+		List<T> res = new ArrayList<T>();
 		Cursor c = database.query(getTableName(), null, null, null, null, null,
 				null);
 		try {
-			fillCollection(c, collection);
+			fillCollection(c, res);
 		} finally {
 			c.close();
 		}
+		return res;
 	}
 
+	public Collection<T> find(String condition) {
+		List<T> res = new ArrayList<T>();
+		Cursor c = database.query(getTableName(), null, condition, null, null, null,
+				null);
+		try {
+			fillCollection(c, res);
+		} finally {
+			c.close();
+		}
+		return res;
+	}
+	
 	public SQLiteDatabase getDatabase() {
 		return database;
 	}

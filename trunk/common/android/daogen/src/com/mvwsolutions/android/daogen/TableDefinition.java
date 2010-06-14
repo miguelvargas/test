@@ -244,6 +244,10 @@ class TableDefinition {
 		}
 		id.nl();
 		
+		// Deleting the table
+		id.iprintln("// SQL Command for creating the table");
+		id.ivprintln(MessageFormat.format("static String GEN_DROP = \"DROP TABLE IF EXISTS {0}\";", name.toUpperCase()));
+		
 		// Creating the table
 		id.iprintln("// SQL Command for creating the table");
 		id.ivprintln(MessageFormat.format("static String GEN_CREATE = \"CREATE TABLE {0} (\" +", name.toUpperCase()));
