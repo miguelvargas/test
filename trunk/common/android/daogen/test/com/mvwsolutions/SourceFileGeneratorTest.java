@@ -14,11 +14,11 @@ public class SourceFileGeneratorTest {
 	@Test
 	public void test()  {
 		try {
-		File base = new File("C:/tmp/3/MultipleChoiceDialogExample/src");
+		File base = new File("./src");
 		ClassWriter cw = new ClassWriter();
 		cw
 				.readClass(new FileInputStream(
-						"C:/tmp/3/MultipleChoiceDialogExample/bin/android/androidVNC/IConnectionBean.class"));
+						"./target/test-classes/com/mvwsolutions/TestBean.class"));
 		new SourceFileGenerator(new FileSourceInterface(base)).generate(cw);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -34,9 +34,10 @@ public class DaoGenMojo extends AbstractMojo {
 		getLog().info(
 				"Project output: "
 						+ mavenProject.getBuild().getOutputDirectory());
-		getLog().info("Generated files will be placed into: " + genOutput);
-
+		
 		final File genOutputDir = new File(genOutput);
+		
+		getLog().info("Generated files will be placed into: " + genOutputDir.getAbsolutePath());
 
 		Utils.traverseFileTree(new File(mavenProject.getBuild()
 				.getOutputDirectory()), new Utils.FileVisitor() {
@@ -62,6 +63,7 @@ public class DaoGenMojo extends AbstractMojo {
 	private void processClassFile(File classFile, File outputDir)
 			throws FileNotFoundException, IOException, CodeCheckException,
 			SIException {
+getLog().info(outputDir.getAbsolutePath() +" , " + classFile.getAbsolutePath());		
 		ClassWriter cw = new ClassWriter();
 		cw.readClass(new FileInputStream(classFile));
 		boolean generated = new SourceFileGenerator(new FileSourceInterface(
