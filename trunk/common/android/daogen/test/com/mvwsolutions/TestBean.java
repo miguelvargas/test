@@ -9,7 +9,7 @@ import com.mvwsolutions.android.dao.meta.TableInterface;
  * @author smineyev
  *
  */
-//@TableInterface
+@TableInterface
 public class TestBean {
 
 	private long id;
@@ -20,7 +20,7 @@ public class TestBean {
 	
 	private String text;
 
-	@FieldAccessor (Type = FieldType.INTEGER_PRIMARY_KEY)
+	@FieldAccessor (Type = FieldType.INTEGER_PRIMARY_KEY, Name="_id")
 	public long getId() {
 		return id;
 	}

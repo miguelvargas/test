@@ -79,6 +79,12 @@ public abstract class BaseDao<T> {
 		return res;
 	}
 
+	// FIXME this is temporary method just to make Miguel's code that uses Cursor work 
+	public Cursor findCursor(String condition) {
+		return database.query(getTableName(), null, condition, null, null, null,
+				null);
+	}
+	
 	public Collection<T> find(String condition) {
 		List<T> res = new ArrayList<T>();
 		Cursor c = database.query(getTableName(), null, condition, null, null, null,

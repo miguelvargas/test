@@ -14,7 +14,7 @@ public class SourceFileGeneratorTest {
 	@Test
 	public void test()  {
 		try {
-		File base = new File("./src");
+		File base = new File("/tmp");
 		ClassWriter cw = new ClassWriter();
 		cw
 				.readClass(new FileInputStream(
